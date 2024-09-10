@@ -1,14 +1,23 @@
 "use client";
 
-import '../styles/globals.css';  // Importa el archivo de estilos globales
-import * as React from 'react';
-import { AppBar, Toolbar, Typography, Container, Grid, Button, TextField, Box } from '@mui/material';
-import { useState } from 'react';
+import "../styles/globals.css"; // Importa el archivo de estilos globales
+import * as React from "react";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Container,
+  Grid,
+  Button,
+  TextField,
+  Box,
+} from "@mui/material";
+import { useState } from "react";
 
 const Home: React.FC = () => {
   const [formData, setFormData] = useState({
-    nombre: '',
-    correo: '',
+    nombre: "",
+    correo: "",
     acompanantes: 0,
   });
 
@@ -24,12 +33,12 @@ const Home: React.FC = () => {
 
     try {
       const response = await fetch(
-        'https://script.google.com/macros/s/AKfycbz6Pz7wepJwoFQEcyjbibp5TP84l0RmqZidwk1fMrdmHFh4kXDBr5p_MdJVKg9kZLk7/exec',
+        "https://script.google.com/macros/s/AKfycbz6Pz7wepJwoFQEcyjbibp5TP84l0RmqZidwk1fMrdmHFh4kXDBr5p_MdJVKg9kZLk7/exec",
         {
-          method: 'POST',
+          method: "POST",
           body: JSON.stringify(formData),
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
         }
       );
@@ -39,21 +48,21 @@ const Home: React.FC = () => {
       }
 
       const result = await response.json();
-      if (result.status === 'success') {
-        alert('¡Confirmación enviada con éxito!');
+      if (result.status === "success") {
+        alert("¡Confirmación enviada con éxito!");
       } else {
-        alert('Hubo un error al enviar la confirmación.');
+        alert("Hubo un error al enviar la confirmación.");
       }
     } catch (error) {
-      console.error('Error en la confirmación:', error);
-      alert('Hubo un error. Por favor, intenta nuevamente.');
+      console.error("Error en la confirmación:", error);
+      alert("Hubo un error. Por favor, intenta nuevamente.");
     }
   };
 
   return (
     <>
       {/* Cabecera */}
-      <AppBar position="fixed" sx={{ backgroundColor: '#ff6f61' }}>
+      {/* <AppBar position="fixed" sx={{ backgroundColor: '#ff6f61' }}>
         <Toolbar>
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
             Fiesta de Sheyla y James
@@ -71,53 +80,123 @@ const Home: React.FC = () => {
             Confirmación
           </Button>
         </Toolbar>
-      </AppBar>
+      </AppBar> */}
+
+      {/* Banner */}
+      <Box
+        sx={{
+          position: "relative",
+          height: "100vh", // Puedes ajustar la altura
+          backgroundImage: `url('/images/banner.jpg')`, // Imagen de fondo
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        {/* Capa de opacidad (Overlay) */}
+        <Box
+          sx={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0, 0, 0, 0.7)',  // Capa negra con 50% de opacidad
+            zIndex: 1,  // Capa superpuesta sobre la imagen de fondo
+          }}
+        />
+        
+        {/* Logo superpuesto */}
+        <Box
+          component="img"
+          src="/images/logo.png" // Ruta de la imagen del logo
+          alt="Logo de Sheyla y James"
+          sx={{
+            position: "absolute",
+            top: "20%", // Centramos verticalmente
+            left: "50%", // Centramos horizontalmente
+            transform: "translate(-50%, -50%)", // Ajustamos para centrar completamente
+            width: "250px", // Ajusta el tamaño del logo
+            height: "auto",
+            zIndex:3,
+          }}
+        />
+      </Box>
 
       {/* Sección de Bienvenida */}
-      <Container maxWidth="lg" id="bienvenidos" sx={{ marginTop: '100px', textAlign: 'center' }}>
+      <Container
+        maxWidth="lg"
+        id="bienvenidos"
+        sx={{ marginTop: "100px", textAlign: "center" }}
+      >
         <Typography variant="h3" gutterBottom>
           ¡Bienvenidos a nuestra boda!
         </Typography>
         <Typography variant="body1">
-          Nos sentimos muy felices de poder compartir este momento tan especial con ustedes. Aquí encontrarás toda la información sobre nuestra boda.
+          Nos sentimos muy felices de poder compartir este momento tan especial
+          con ustedes. Aquí encontrarás toda la información sobre nuestra boda.
         </Typography>
       </Container>
 
       {/* Sección de Fecha */}
-      <Container maxWidth="lg" id="fecha" sx={{ marginTop: '40px', textAlign: 'center' }}>
+      <Container
+        maxWidth="lg"
+        id="fecha"
+        sx={{ marginTop: "40px", textAlign: "center" }}
+      >
         <Typography variant="h4" gutterBottom>
           Fecha y Ubicación
         </Typography>
         <Typography variant="body1">
-          ¡Te esperamos el 15 de Diciembre de 2024! La ceremonia será en el hermoso jardín de "Villa Maravilla" a las 6:00 PM. ¡No faltes!
+          ¡Te esperamos el 15 de Diciembre de 2024! La ceremonia será en el
+          hermoso jardín de "Villa Maravilla" a las 6:00 PM. ¡No faltes!
         </Typography>
       </Container>
 
       {/* Sección de Galería */}
-      <Container maxWidth="lg" id="galeria" sx={{ marginTop: '40px', textAlign: 'center' }}>
+      <Container
+        maxWidth="lg"
+        id="galeria"
+        sx={{ marginTop: "40px", textAlign: "center" }}
+      >
         <Typography variant="h4" gutterBottom>
           Galería
         </Typography>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6} md={4}>
-            <img src="https://via.placeholder.com/300" alt="Foto 1" style={{ width: '100%' }} />
+            <img
+              src="https://via.placeholder.com/300"
+              alt="Foto 1"
+              style={{ width: "100%" }}
+            />
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
-            <img src="https://via.placeholder.com/300" alt="Foto 2" style={{ width: '100%' }} />
+            <img
+              src="https://via.placeholder.com/300"
+              alt="Foto 2"
+              style={{ width: "100%" }}
+            />
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
-            <img src="https://via.placeholder.com/300" alt="Foto 3" style={{ width: '100%' }} />
+            <img
+              src="https://via.placeholder.com/300"
+              alt="Foto 3"
+              style={{ width: "100%" }}
+            />
           </Grid>
         </Grid>
       </Container>
 
       {/* Sección de Confirmación */}
-      <Container maxWidth="lg" id="confirmacion" sx={{ marginTop: '40px', textAlign: 'center' }}>
+      <Container
+        maxWidth="lg"
+        id="confirmacion"
+        sx={{ marginTop: "40px", textAlign: "center" }}
+      >
         <Typography variant="h4" gutterBottom>
           Confirmación de asistencia
         </Typography>
         <form onSubmit={handleSubmit}>
-          <Box sx={{ maxWidth: 400, margin: '0 auto' }}>
+          <Box sx={{ maxWidth: 400, margin: "0 auto" }}>
             <TextField
               label="Nombre"
               variant="outlined"
@@ -154,7 +233,7 @@ const Home: React.FC = () => {
               type="submit"
               variant="contained"
               color="primary"
-              sx={{ marginTop: '20px', width: '100%' }}
+              sx={{ marginTop: "20px", width: "100%" }}
             >
               Enviar Confirmación
             </Button>
