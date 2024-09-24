@@ -13,6 +13,7 @@ import {
   Box,
 } from "@mui/material";
 import { useState } from "react";
+import NumericInputField from './component/numeric-input-field';
 
 const Home: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -86,8 +87,8 @@ const Home: React.FC = () => {
       <Box
         sx={{
           position: "relative",
-          height: "100vh", // Puedes ajustar la altura
-          backgroundImage: `url('/images/banner.jpg')`, // Imagen de fondo
+          height: "100vh", 
+          backgroundImage: `url('/images/banner.jpg')`, 
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -100,22 +101,22 @@ const Home: React.FC = () => {
             left: 0,
             width: '100%',
             height: '100%',
-            backgroundColor: 'rgba(0, 0, 0, 0.7)',  // Capa negra con 50% de opacidad
-            zIndex: 1,  // Capa superpuesta sobre la imagen de fondo
+            backgroundColor: 'rgba(0, 0, 0, 0.7)',  
+            zIndex: 1,  
           }}
         />
         
         {/* Logo superpuesto */}
         <Box
           component="img"
-          src="/images/logo.png" // Ruta de la imagen del logo
+          src="/images/logo.png" 
           alt="Logo de Sheyla y James"
           sx={{
             position: "absolute",
-            top: "20%", // Centramos verticalmente
-            left: "50%", // Centramos horizontalmente
-            transform: "translate(-50%, -50%)", // Ajustamos para centrar completamente
-            width: "250px", // Ajusta el tamaño del logo
+            top: "20%", 
+            left: "50%",
+            transform: "translate(-50%, -50%)", 
+            width: {xs: '250px', sm: '250px', md: '350px', lg:'450px' }, 
             height: "auto",
             zIndex:3,
           }}
@@ -195,7 +196,7 @@ const Home: React.FC = () => {
         <Typography variant="h4" gutterBottom>
           Confirmación de asistencia
         </Typography>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
           <Box sx={{ maxWidth: 400, margin: "0 auto" }}>
             <TextField
               label="Nombre"
@@ -206,6 +207,7 @@ const Home: React.FC = () => {
               fullWidth
               margin="normal"
               required
+              className="mb-4"
             />
             <TextField
               label="Correo electrónico"
@@ -217,8 +219,16 @@ const Home: React.FC = () => {
               fullWidth
               margin="normal"
               required
+              className="mb-4"
             />
-            <TextField
+            <NumericInputField
+        label="Cantidad"
+        initialValue={5}
+        min={0}
+        max={100}
+        onChange={handleChange}
+      />
+            {/* <TextField
               label="Número de acompañantes"
               variant="outlined"
               name="acompanantes"
@@ -228,12 +238,14 @@ const Home: React.FC = () => {
               fullWidth
               margin="normal"
               required
-            />
+              className="mb-4"
+            /> */}
             <Button
               type="submit"
               variant="contained"
               color="primary"
               sx={{ marginTop: "20px", width: "100%" }}
+              className="w-full py-3 mt-4 bg-blue-600 hover:bg-blue-700"
             >
               Enviar Confirmación
             </Button>
