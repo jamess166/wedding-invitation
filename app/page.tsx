@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import NumericInputField from './component/numeric-input-field';
+import Counter from "./component/numeric-input-field";
 
 const Home: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -26,6 +27,13 @@ const Home: React.FC = () => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleCounterChange = (value: number) => {
+    setFormData({
+      ...formData,
+      acompanantes: value, // Actualiza el estado de acompañantes
     });
   };
 
@@ -87,8 +95,8 @@ const Home: React.FC = () => {
       <Box
         sx={{
           position: "relative",
-          height: "100vh", 
-          backgroundImage: `url('/images/banner.jpg')`, 
+          height: "100vh",
+          backgroundImage: `url('/images/banner.jpg')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -101,24 +109,24 @@ const Home: React.FC = () => {
             left: 0,
             width: '100%',
             height: '100%',
-            backgroundColor: 'rgba(0, 0, 0, 0.7)',  
-            zIndex: 1,  
+            backgroundColor: 'rgba(0, 0, 0, 0.7)',
+            zIndex: 1,
           }}
         />
-        
+
         {/* Logo superpuesto */}
         <Box
           component="img"
-          src="/images/logo.png" 
+          src="/images/logo.png"
           alt="Logo de Sheyla y James"
           sx={{
             position: "absolute",
-            top: "20%", 
+            top: "20%",
             left: "50%",
-            transform: "translate(-50%, -50%)", 
-            width: {xs: '250px', sm: '250px', md: '350px', lg:'450px' }, 
+            transform: "translate(-50%, -50%)",
+            width: { xs: '250px', sm: '250px', md: '350px', lg: '450px' },
             height: "auto",
-            zIndex:3,
+            zIndex: 3,
           }}
         />
       </Box>
@@ -193,12 +201,13 @@ const Home: React.FC = () => {
         id="confirmacion"
         sx={{ marginTop: "40px", textAlign: "center" }}
       >
-        <Typography variant="h4" gutterBottom>
-          Confirmación de asistencia
-        </Typography>
-        <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
+
+        <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-8 mb-6 p-6 bg-white rounded-lg">
           <Box sx={{ maxWidth: 400, margin: "0 auto" }}>
-            <TextField
+            <Typography gutterBottom className="mb-4 text-left text-gray-600 text-md">
+              Por favor responda antes de 01 de Febrero
+            </Typography>
+            {/* <TextField
               label="Nombre"
               variant="outlined"
               name="nombre"
@@ -208,10 +217,21 @@ const Home: React.FC = () => {
               margin="normal"
               required
               className="mb-4"
+            /> */}
+            <TextField
+              label="Nombre"
+              variant="standard" // Usa 'standard' para solo una línea inferior
+              name="nombre"
+              value={formData.nombre}
+              onChange={handleChange}
+              fullWidth
+              margin="normal"
+              required
+              sx={{ borderBottom: '1.5px solid',color: 'black' }} 
             />
             <TextField
               label="Correo electrónico"
-              variant="outlined"
+              variant="standard"
               name="correo"
               type="email"
               value={formData.correo}
@@ -220,27 +240,43 @@ const Home: React.FC = () => {
               margin="normal"
               required
               className="mb-4"
+              sx={{ borderBottom: '1.5px solid',color: 'black'  }}
             />
-            <NumericInputField
-        label="Cantidad"
-        initialValue={5}
-        min={0}
-        max={100}
-        onChange={handleChange}
-      />
-            {/* <TextField
-              label="Número de acompañantes"
-              variant="outlined"
-              name="acompanantes"
-              type="number"
-              value={formData.acompanantes}
-              onChange={handleChange}
-              fullWidth
-              margin="normal"
-              required
-              className="mb-4"
-            /> */}
+            {/* <Counter min={0} max={3} />   
+             */}
+
+            <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <Typography gutterBottom className="mb-4 mt-4 text-center text-gray-800 text-md">
+                Acompañantes
+              </Typography>
+              <Box sx={{ width: '100%' }}>
+                <Counter min={0} max={3} onChange={handleCounterChange} />
+              </Box>
+            </Box>
+
             <Button
+              type="submit"
+              variant="contained"
+              sx={{
+                marginTop: "20px",
+                width: "100%",
+                backgroundColor: "#6a714f", // Verde principal
+                color: "white", // Texto blanco
+                '&:hover': {
+                  backgroundColor: "#5d6445", // Verde más oscuro al pasar el ratón
+                },
+                '&:active': {
+                  backgroundColor: "#373d2a", // Verde aún más oscuro al hacer clic
+                },
+                borderRadius: "8px", // Bordes redondeados
+                paddingY: "px", // Padding vertical
+                fontSize: "14px", // Tamaño de fuente
+              }}
+            >
+              Enviar Confirmación
+            </Button>
+
+            {/* <Button
               type="submit"
               variant="contained"
               color="primary"
@@ -248,7 +284,7 @@ const Home: React.FC = () => {
               className="w-full py-3 mt-4 bg-blue-600 hover:bg-blue-700"
             >
               Enviar Confirmación
-            </Button>
+            </Button> */}
           </Box>
         </form>
       </Container>
