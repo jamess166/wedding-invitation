@@ -1,5 +1,5 @@
 "use client";
-
+import Image from "next/image";
 import "../styles/globals.css"; // Importa el archivo de estilos globales
 import * as React from "react";
 import {
@@ -11,12 +11,52 @@ import {
   Button,
   TextField,
   Box,
+  Paper,
 } from "@mui/material";
 import { useState } from "react";
-import NumericInputField from './component/numeric-input-field';
 import Counter from "./component/numeric-input-field";
+import CustomTextField from "./component/customTextField";
+import ProfileSection from "./component/profileSection";
+
+// import {
+//   Roboto_Mono,
+//   Roboto,
+//   Allura,
+//   Gloria_Hallelujah,
+// } from "next/font/google";
+import Countdown from "./component/countDown";
+import WavyImageBox from "./component/wavyImageBox";
+import LoadingModal from "./component/loadingModal";
+import LabelWithDecorations from "./component/title";
+import DressCodeCard from "./component/dressCodeCard";
+import CustomButton from "./component/customButton";
+import Banner from "./component/banner";
+import ConfirmationForm from "./component/ConfirmationForm";
+
+// const roboto = Roboto({
+//   subsets: ["latin"], // Define el subconjunto de caracteres (en este caso 'latin')
+//   weight: ["400", "700"], // Opcional: Define los pesos que vas a utilizar
+//   style: ["normal", "italic"], // Opcional: Define los estilos que vas a utilizar
+//   display: "swap", // Opcional: Mejora la carga de la fuente
+// });
+
+// const roboto_mono = Roboto_Mono({
+//   subsets: ["latin"], // Define el subconjunto de caracteres (en este caso 'latin')
+//   weight: ["300"], // Opcional: Define los pesos que vas a utilizar
+//   style: ["normal", "italic"], // Opcional: Define los estilos que vas a utilizar
+//   display: "swap", // Opcional: Mejora la carga de la fuente
+// });
+
+// const gloria_Hallelujah = Gloria_Hallelujah({
+//   subsets: ["latin"], // Define el subconjunto de caracteres (en este caso 'latin')
+//   weight: ["400"], // Opcional: Define los pesos que vas a utilizar
+//   style: ["normal"], // Opcional: Define los estilos que vas a utilizar
+//   display: "swap", // Opcional: Mejora la carga de la fuente
+// });
 
 const Home: React.FC = () => {
+  const targetDate = new Date("2025-02-01T23:59:59");
+
   const [formData, setFormData] = useState({
     nombre: "",
     correo: "",
@@ -70,96 +110,267 @@ const Home: React.FC = () => {
 
   return (
     <>
-      {/* Cabecera */}
-      {/* <AppBar position="fixed" sx={{ backgroundColor: '#ff6f61' }}>
-        <Toolbar>
-          <Typography variant="h6" sx={{ flexGrow: 1 }}>
-            Fiesta de Sheyla y James
-          </Typography>
-          <Button color="inherit" href="#bienvenidos">
-            Bienvenidos
-          </Button>
-          <Button color="inherit" href="#fecha">
-            Fecha
-          </Button>
-          <Button color="inherit" href="#galeria">
-            Galería
-          </Button>
-          <Button color="inherit" href="#confirmacion">
-            Confirmación
-          </Button>
-        </Toolbar>
-      </AppBar> */}
+      {/* <LoadingModal /> */}
 
-      {/* Banner */}
+      <Banner
+        date="01.02.2025"
+        names={["Sheyla", "James"]}
+        backgroundImage="/images/banner.jpg"
+        logoImage="/images/logo.png"
+      />
+
       <Box
         sx={{
           position: "relative",
-          height: "100vh",
-          backgroundImage: `url('/images/banner.jpg')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
         }}
       >
-        {/* Capa de opacidad (Overlay) */}
         <Box
           sx={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            backgroundColor: 'rgba(0, 0, 0, 0.7)',
-            zIndex: 1,
-          }}
-        />
-
-        {/* Logo superpuesto */}
-        <Box
-          component="img"
-          src="/images/logo.png"
-          alt="Logo de Sheyla y James"
-          sx={{
-            position: "absolute",
-            top: "20%",
+            position: "absolute", // Asegúrate de que el Countdown se posicione correctamente
+            // alignItems:"center",
             left: "50%",
-            transform: "translate(-50%, -50%)",
-            width: { xs: '250px', sm: '250px', md: '350px', lg: '450px' },
-            height: "auto",
-            zIndex: 3,
+            transform: "translateX(-50%)",
+            // margin: "0,0,0,-500px",
+            top: { xs: "-110px", sm: "-150px" }, // Ajusta la posición vertical del Countdown
+            zIndex: 10, // Asegúrate de que tenga un zIndex mayor
           }}
-        />
+        >
+          <Countdown targetDate={targetDate} />
+        </Box>
       </Box>
 
-      {/* Sección de Bienvenida */}
-      <Container
-        maxWidth="lg"
-        id="bienvenidos"
-        sx={{ marginTop: "100px", textAlign: "center" }}
-      >
-        <Typography variant="h3" gutterBottom>
-          ¡Bienvenidos a nuestra boda!
-        </Typography>
-        <Typography variant="body1">
-          Nos sentimos muy felices de poder compartir este momento tan especial
-          con ustedes. Aquí encontrarás toda la información sobre nuestra boda.
-        </Typography>
-      </Container>
+      {/* <Box mt={{ xs: 30, sm: 30 }}>
+        <Box mb={4} className="flex justify-center items-center">
+          <Paper
+            elevation={3}
+            sx={{
+              width: "200px",
+              height: "200px",
+              borderRadius: "50%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              bgcolor: "white",
+              position: "relative",
+              overflow: "hidden", // Para asegurar que la imagen no sobresalga del círculo
+            }}
+            className="shadow-lg shadow-gray-500/50"
+          >
+            <Box className="w-32 h-32 relative animate-swing">
+              <Image
+                src="images/img_circuloCeremonia.svg"
+                alt="Ceremony rings"
+                layout="fill" // Cambia "fill" a "layout='fill'" para usar el comportamiento de Next.js
+                objectFit="contain" // Usa la propiedad objectFit directamente en Next.js
+              />
+            </Box>
+          </Paper>
+        </Box>
 
-      {/* Sección de Fecha */}
-      <Container
-        maxWidth="lg"
-        id="fecha"
-        sx={{ marginTop: "40px", textAlign: "center" }}
+        <LabelWithDecorations text="Ceremonia" />
+
+        <Typography>
+          Día
+        </Typography>
+      </Box> */}
+
+      <Box
+        mt={{ xs: 30, sm: 30 }}
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        sx={{
+          backgroundColor: "var(--background)", // Fondo general de la sección
+          padding: "20px",
+          borderRadius: "16px", // Bordes redondeados suaves
+          maxWidth: "350px", // Ancho máximo para el contenedor
+          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", // Suave sombra para dar profundidad
+        }}
       >
-        <Typography variant="h4" gutterBottom>
-          Fecha y Ubicación
+        {/* Imagen circular */}
+        <Box className="flex justify-center items-center mb-4">
+          <Paper
+            elevation={0}
+            sx={{
+              width: "200px",
+              height: "200px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: "50%",
+              border: "4px solid var(--color-7)", // Borde de color dorado suave
+              position: "relative",
+              overflow: "hidden",
+              backgroundColor: "var(--color-4)", // Fondo claro del círculo
+            }}
+          >
+            <Box className="w-32 h-32 relative animate-swing">
+              <Image
+                src="images/img_circuloCeremonia.svg"
+                alt="Ceremony rings"
+                layout="fill"
+                objectFit="contain"
+              />
+            </Box>
+          </Paper>
+        </Box>
+
+        {/* Título con decoraciones */}
+        <LabelWithDecorations
+          text="Ceremonia"
+          sx={{
+            fontFamily: "var(--font-allura)", // Fuente elegante
+            fontSize: "2rem",
+            color: "var(--color-1)", // Color verde oscuro para el título
+          }}
+        />
+
+        {/* Detalles de la ceremonia */}
+        <Typography
+          textAlign="center"
+          sx={{
+            fontFamily: "var(--font-roboto)",
+            fontSize: "1.2rem",
+            color: "var(--color-6)", // Texto de color gris suave
+            marginBottom: "8px",
+          }}
+        >
+          Día
         </Typography>
-        <Typography variant="body1">
-          ¡Te esperamos el 15 de Diciembre de 2024! La ceremonia será en el
-          hermoso jardín de "Villa Maravilla" a las 6:00 PM. ¡No faltes!
+
+        <Typography
+          textAlign="center"
+          sx={{
+            fontFamily: "var(--font-opensans)",
+            fontSize: "1rem",
+            color: "var(--color-2)", // Color verde medio para la fecha
+            marginBottom: "16px",
+          }}
+        >
+          Sábado 01 de Febrero - 16:30 hr
         </Typography>
-      </Container>
+
+        {/* Botón Agendar */}
+        <Button
+          variant="outlined"
+          // sx={{
+          //   color: "white",
+          //   fontFamily: "var(--font-opensans)",
+          //   borderRadius: "50px",
+          //   padding: "8px 16px",
+          //   marginBottom: "16px",
+          //   "&:hover": {
+          //     backgroundColor: "var(--color-2)", // Efecto hover más claro
+          //   },
+          // }}
+          sx={{
+            color: "var(--color-1)", // Color verde oscuro
+            borderColor: "var(--color-1)", // Borde en verde oscuro
+            fontFamily: "var(--font-opensans)",
+            borderRadius: "50px",
+            padding: "8px 16px",
+            marginBottom: "16px",
+            "&:hover": {
+              backgroundColor: "var(--color-4)", // Fondo claro al pasar el ratón
+              borderColor: "var(--color-2)", // Cambio de borde en hover
+            },
+          }}
+        >
+          Agendar
+        </Button>
+
+        {/* Dirección */}
+        <Typography
+          textAlign="center"
+          sx={{
+            fontFamily: "var(--font-roboto)",
+            fontSize: "1.2rem",
+            color: "var(--color-6)", // Gris suave
+            marginBottom: "8px",
+          }}
+        >
+          Dirección
+        </Typography>
+
+        <Typography
+          textAlign="center"
+          sx={{
+            fontFamily: "var(--font-opensans)",
+            fontSize: "1rem",
+            color: "var(--color-2)", // Verde medio
+            marginBottom: "16px",
+          }}
+        >
+          Catedral de Trujillo
+        </Typography>
+
+        {/* Botón Cómo llegar */}
+        <Button
+          variant="outlined"
+          sx={{
+            color: "var(--color-1)", // Color verde oscuro
+            borderColor: "var(--color-1)", // Borde en verde oscuro
+            fontFamily: "var(--font-opensans)",
+            borderRadius: "50px",
+            padding: "8px 16px",
+            "&:hover": {
+              backgroundColor: "var(--color-4)", // Fondo claro al pasar el ratón
+              borderColor: "var(--color-2)", // Cambio de borde en hover
+            },
+          }}
+        >
+          Cómo llegar
+        </Button>
+      </Box>
+
+      {/* <Box
+        mt={{ xs: 30, sm: 30 }}
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+      >
+        <Box className="flex justify-center items-center">
+          <Paper
+            elevation={0} // Cambia la elevación a 0 para eliminar el borde del card
+            sx={{
+              width: "200px",
+              height: "200px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              bgcolor: "transparent", // Fondo transparente
+              position: "relative",
+              overflow: "hidden",
+            }}
+            className="shadow-none" // Remueve cualquier sombra de Tailwind si es necesario
+          >
+            <Box className="w-32 h-32 relative animate-swing">
+              <Image
+                src="images/img_circuloCeremonia.svg"
+                alt="Ceremony rings"
+                layout="fill"
+                objectFit="contain"
+              />
+            </Box>
+          </Paper>
+        </Box>
+
+        <LabelWithDecorations text="Ceremonia" />
+
+        <Typography textAlign="center">Día</Typography>
+        <Typography textAlign="center">Sádado 01 de Febrero - 16:30 hr</Typography>
+        <Button>Agendar</Button>
+
+        <Typography textAlign="center">Dirección</Typography>
+        <Typography textAlign="center">Catedral de Trujillo</Typography>
+        <Button>Como llegar</Button>
+      </Box> */}
+
+      <Box m={6}>
+        <LabelWithDecorations text="Celebración" />
+      </Box>
+
+      <DressCodeCard />
 
       {/* Sección de Galería */}
       <Container
@@ -195,99 +406,12 @@ const Home: React.FC = () => {
         </Grid>
       </Container>
 
-      {/* Sección de Confirmación */}
-      <Container
-        maxWidth="lg"
-        id="confirmacion"
-        sx={{ marginTop: "40px", textAlign: "center" }}
-      >
-
-        <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-8 mb-6 p-6 bg-white rounded-lg">
-          <Box sx={{ maxWidth: 400, margin: "0 auto" }}>
-            <Typography gutterBottom className="mb-4 text-left text-gray-600 text-md">
-              Por favor responda antes de 01 de Febrero
-            </Typography>
-            {/* <TextField
-              label="Nombre"
-              variant="outlined"
-              name="nombre"
-              value={formData.nombre}
-              onChange={handleChange}
-              fullWidth
-              margin="normal"
-              required
-              className="mb-4"
-            /> */}
-            <TextField
-              label="Nombre"
-              variant="standard" // Usa 'standard' para solo una línea inferior
-              name="nombre"
-              value={formData.nombre}
-              onChange={handleChange}
-              fullWidth
-              margin="normal"
-              required
-              sx={{ borderBottom: '1.5px solid',color: 'black' }} 
-            />
-            <TextField
-              label="Correo electrónico"
-              variant="standard"
-              name="correo"
-              type="email"
-              value={formData.correo}
-              onChange={handleChange}
-              fullWidth
-              margin="normal"
-              required
-              className="mb-4"
-              sx={{ borderBottom: '1.5px solid',color: 'black'  }}
-            />
-            {/* <Counter min={0} max={3} />   
-             */}
-
-            <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <Typography gutterBottom className="mb-4 mt-4 text-center text-gray-800 text-md">
-                Acompañantes
-              </Typography>
-              <Box sx={{ width: '100%' }}>
-                <Counter min={0} max={3} onChange={handleCounterChange} />
-              </Box>
-            </Box>
-
-            <Button
-              type="submit"
-              variant="contained"
-              sx={{
-                marginTop: "20px",
-                width: "100%",
-                backgroundColor: "#6a714f", // Verde principal
-                color: "white", // Texto blanco
-                '&:hover': {
-                  backgroundColor: "#5d6445", // Verde más oscuro al pasar el ratón
-                },
-                '&:active': {
-                  backgroundColor: "#373d2a", // Verde aún más oscuro al hacer clic
-                },
-                borderRadius: "8px", // Bordes redondeados
-                paddingY: "px", // Padding vertical
-                fontSize: "14px", // Tamaño de fuente
-              }}
-            >
-              Enviar Confirmación
-            </Button>
-
-            {/* <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              sx={{ marginTop: "20px", width: "100%" }}
-              className="w-full py-3 mt-4 bg-blue-600 hover:bg-blue-700"
-            >
-              Enviar Confirmación
-            </Button> */}
-          </Box>
-        </form>
-      </Container>
+      <ConfirmationForm
+        formData={formData}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        handleCounterChange={handleCounterChange}
+      />
     </>
   );
 };

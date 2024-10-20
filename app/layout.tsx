@@ -1,17 +1,54 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "./globals.css";
+import "../styles/globals.css";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+
+import { Allura, Roboto, Roboto_Mono, Cookie, Open_Sans } from 'next/font/google';
+
+const allura = Allura({
+  subsets: ['latin'],
+  variable: '--font-allura',
+  display: 'swap',
+  weight: "400"
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+
+const roboto = Roboto({
+  subsets: ['latin'],
+  variable: '--font-roboto',  // Añade esta línea
+  weight: ['400', '700'],
+  display: 'swap',
 });
+
+const robotoMono = Roboto_Mono({
+  subsets: ['latin'],
+  variable: '--font-roboto-mono',  // Añade esta línea
+  display: 'swap',
+});
+
+const cookie = Cookie({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-cookie',  // Añade esta línea
+  display: 'swap',
+});
+
+const openSans = Open_Sans({
+  subsets: ['latin'],
+  variable: '--font-opensans',  // Añade esta línea
+  display: 'swap',
+});
+
+// const geistSans = localFont({
+//   src: "./fonts/GeistVF.woff",
+//   variable: "--font-geist-sans",
+//   weight: "100 900",
+// });
+// const geistMono = localFont({
+//   src: "./fonts/GeistMonoVF.woff",
+//   variable: "--font-geist-mono",
+//   weight: "100 900",
+// });
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,11 +62,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
+      <body className={`${roboto.variable} ${allura.variable} ${robotoMono.variable} ${cookie.variable} ${openSans.variable}`}>
+        {children}
+      </body>
+      {/* <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
-      </body>
+      </body> */}
     </html>
   );
 }

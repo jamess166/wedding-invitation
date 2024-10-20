@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Box, IconButton, TextField } from '@mui/material';
-import AddIcon from '@mui/icons-material/Add';
-import RemoveIcon from '@mui/icons-material/Remove';
+import React, { useState } from "react";
+import { Box, IconButton, TextField } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 
 interface CounterProps {
   min?: number;
@@ -9,7 +9,7 @@ interface CounterProps {
   onChange: (value: number) => void; // Prop para manejar el cambio
 }
 
-const Counter: React.FC<CounterProps> = ({ min = 0, max = 3, onChange }) => {
+const Counter: React.FC<CounterProps> = ({ min = 1, max = 3, onChange }) => {
   const [value, setValue] = useState<number>(min);
 
   const handleIncrement = () => {
@@ -29,7 +29,10 @@ const Counter: React.FC<CounterProps> = ({ min = 0, max = 3, onChange }) => {
   };
 
   return (
-    <Box className="flex items-center space-x-2" sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+    <Box
+      className="flex items-center space-x-2"
+      sx={{ width: "100%", display: "flex", justifyContent: "center" }}
+    >
       {/* Botón de restar */}
       <IconButton
         onClick={handleDecrement}
@@ -40,11 +43,19 @@ const Counter: React.FC<CounterProps> = ({ min = 0, max = 3, onChange }) => {
       </IconButton>
 
       {/* Campo de texto para mostrar el valor */}
-      <TextField        
+      <TextField
         value={value}
-        inputProps={{ readOnly: true }}
-        className="w-12 text-center"
-        variant="outlined"
+        variant="standard"
+        className="w-16"
+        inputProps={{
+          readOnly: true, // El campo es de solo lectura
+          style: { textAlign: "center" }, // Aplica el centrado directamente al campo de entrada
+        }}
+        sx={{
+          "& .MuiInputBase-root": {
+            textAlign: "center", // Asegura que el contenedor también está centrado
+          },
+        }}
       />
 
       {/* Botón de sumar */}
