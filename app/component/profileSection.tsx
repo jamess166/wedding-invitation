@@ -59,7 +59,7 @@ const ProfileSection: React.FC = () => {
           </Typography>
         </Grid>
 
-        <ResponsiveGridComponent imageSrc="/images/profile.jpeg" allura={allura} />
+        {/* <ResponsiveGridComponent imageSrc="/images/profile.jpeg" allura={allura} /> */}
 
       </Grid>
     </Box>

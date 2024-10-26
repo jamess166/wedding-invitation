@@ -32,6 +32,9 @@ import DressCodeCard from "./component/dressCodeCard";
 import CustomButton from "./component/customButton";
 import Banner from "./component/banner";
 import ConfirmationForm from "./component/ConfirmationForm";
+import PaypalButton from "./component/paypal";
+import CeremonyCard from "./component/ceremonyCard";
+import CelebrationCard from "./component/celebrationCard";
 
 // const roboto = Roboto({
 //   subsets: ["latin"], // Define el subconjunto de caracteres (en este caso 'latin')
@@ -139,189 +142,59 @@ const Home: React.FC = () => {
         </Box>
       </Box>
 
-      {/* <Box mt={{ xs: 30, sm: 30 }}>
-        <Box mb={4} className="flex justify-center items-center">
-          <Paper
-            elevation={3}
-            sx={{
-              width: "200px",
-              height: "200px",
-              borderRadius: "50%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              bgcolor: "white",
-              position: "relative",
-              overflow: "hidden", // Para asegurar que la imagen no sobresalga del círculo
-            }}
-            className="shadow-lg shadow-gray-500/50"
-          >
-            <Box className="w-32 h-32 relative animate-swing">
-              <Image
-                src="images/img_circuloCeremonia.svg"
-                alt="Ceremony rings"
-                layout="fill" // Cambia "fill" a "layout='fill'" para usar el comportamiento de Next.js
-                objectFit="contain" // Usa la propiedad objectFit directamente en Next.js
-              />
-            </Box>
-          </Paper>
-        </Box>
-
-        <LabelWithDecorations text="Ceremonia" />
-
-        <Typography>
-          Día
-        </Typography>
-      </Box> */}
-
       <Box
-        mt={{ xs: 30, sm: 30 }}
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
+        mt={{ xs: 28, sm: 25 }}
         sx={{
-          backgroundColor: "var(--background)", // Fondo general de la sección
-          padding: "20px",
-          borderRadius: "16px", // Bordes redondeados suaves
-          maxWidth: "350px", // Ancho máximo para el contenedor
-          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", // Suave sombra para dar profundidad
+          maxWidth: 1000, // Ancho máximo de 700px
+          margin: "0 auto", // Centrar el grid
+          padding: { xs: "0 16px", sm: "0 16px", md: 0 }, // Padding lateral solo en pantallas pequeñas
         }}
       >
-        {/* Imagen circular */}
-        <Box className="flex justify-center items-center mb-4">
-          <Paper
-            elevation={0}
-            sx={{
-              width: "200px",
-              height: "200px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              borderRadius: "50%",
-              border: "4px solid var(--color-7)", // Borde de color dorado suave
-              position: "relative",
-              overflow: "hidden",
-              backgroundColor: "var(--color-4)", // Fondo claro del círculo
-            }}
-          >
-            <Box className="w-32 h-32 relative animate-swing">
-              <Image
-                src="images/img_circuloCeremonia.svg"
-                alt="Ceremony rings"
-                layout="fill"
-                objectFit="contain"
-              />
+        <Grid container columnSpacing={0} rowSpacing={{xs:5,sm:10}} columns={{ xs: 1, md: 2, xl: 3 }}>
+          <Grid item xs={1} md={1}>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <CeremonyCard />
             </Box>
-          </Paper>
-        </Box>
-
-        {/* Título con decoraciones */}
-        <LabelWithDecorations
-          text="Ceremonia"
-          sx={{
-            fontFamily: "var(--font-allura)", // Fuente elegante
-            fontSize: "2rem",
-            color: "var(--color-1)", // Color verde oscuro para el título
-          }}
-        />
-
-        {/* Detalles de la ceremonia */}
-        <Typography
-          textAlign="center"
-          sx={{
-            fontFamily: "var(--font-roboto)",
-            fontSize: "1.2rem",
-            color: "var(--color-6)", // Texto de color gris suave
-            marginBottom: "8px",
-          }}
-        >
-          Día
-        </Typography>
-
-        <Typography
-          textAlign="center"
-          sx={{
-            fontFamily: "var(--font-opensans)",
-            fontSize: "1rem",
-            color: "var(--color-2)", // Color verde medio para la fecha
-            marginBottom: "16px",
-          }}
-        >
-          Sábado 01 de Febrero - 16:30 hr
-        </Typography>
-
-        {/* Botón Agendar */}
-        <Button
-          variant="outlined"
-          // sx={{
-          //   color: "white",
-          //   fontFamily: "var(--font-opensans)",
-          //   borderRadius: "50px",
-          //   padding: "8px 16px",
-          //   marginBottom: "16px",
-          //   "&:hover": {
-          //     backgroundColor: "var(--color-2)", // Efecto hover más claro
-          //   },
-          // }}
-          sx={{
-            color: "var(--color-1)", // Color verde oscuro
-            borderColor: "var(--color-1)", // Borde en verde oscuro
-            fontFamily: "var(--font-opensans)",
-            borderRadius: "50px",
-            padding: "8px 16px",
-            marginBottom: "16px",
-            "&:hover": {
-              backgroundColor: "var(--color-4)", // Fondo claro al pasar el ratón
-              borderColor: "var(--color-2)", // Cambio de borde en hover
-            },
-          }}
-        >
-          Agendar
-        </Button>
-
-        {/* Dirección */}
-        <Typography
-          textAlign="center"
-          sx={{
-            fontFamily: "var(--font-roboto)",
-            fontSize: "1.2rem",
-            color: "var(--color-6)", // Gris suave
-            marginBottom: "8px",
-          }}
-        >
-          Dirección
-        </Typography>
-
-        <Typography
-          textAlign="center"
-          sx={{
-            fontFamily: "var(--font-opensans)",
-            fontSize: "1rem",
-            color: "var(--color-2)", // Verde medio
-            marginBottom: "16px",
-          }}
-        >
-          Catedral de Trujillo
-        </Typography>
-
-        {/* Botón Cómo llegar */}
-        <Button
-          variant="outlined"
-          sx={{
-            color: "var(--color-1)", // Color verde oscuro
-            borderColor: "var(--color-1)", // Borde en verde oscuro
-            fontFamily: "var(--font-opensans)",
-            borderRadius: "50px",
-            padding: "8px 16px",
-            "&:hover": {
-              backgroundColor: "var(--color-4)", // Fondo claro al pasar el ratón
-              borderColor: "var(--color-2)", // Cambio de borde en hover
-            },
-          }}
-        >
-          Cómo llegar
-        </Button>
+          </Grid>
+          <Grid item xs={1} md={1}>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <CelebrationCard />
+            </Box>
+          </Grid>
+          <Grid item xs={1} md={1}>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <CeremonyCard />
+            </Box>
+          </Grid>
+          <Grid item xs={1} md={1}>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <CeremonyCard />
+            </Box>
+          </Grid>
+        </Grid>
       </Box>
+
+      <PaypalButton />
 
       {/* <Box
         mt={{ xs: 30, sm: 30 }}
