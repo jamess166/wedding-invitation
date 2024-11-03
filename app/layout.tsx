@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import "../styles/globals.css";
 
 
-import { Allura, Roboto, Roboto_Mono, Cookie, Open_Sans } from 'next/font/google';
+import { Allura, Roboto, Roboto_Mono, Cookie, Open_Sans, Dancing_Script } from 'next/font/google';
 
 const allura = Allura({
   subsets: ['latin'],
@@ -38,6 +38,11 @@ const openSans = Open_Sans({
   display: 'swap',
 });
 
+const dancing = Dancing_Script({
+  subsets: ['latin'],
+  variable: '--font-dancing',  // Añade esta línea
+  display: 'swap',
+});
 // const geistSans = localFont({
 //   src: "./fonts/GeistVF.woff",
 //   variable: "--font-geist-sans",
@@ -62,7 +67,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${roboto.variable} ${allura.variable} ${robotoMono.variable} ${cookie.variable} ${openSans.variable}`}>
+      <body className={`${roboto.variable} ${allura.variable} ${robotoMono.variable} ${cookie.variable} ${openSans.variable} ${dancing.variable}`}>
         {children}
       </body>
       {/* <body

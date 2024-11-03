@@ -7,9 +7,10 @@ interface CounterProps {
   min?: number;
   max?: number;
   onChange: (value: number) => void; // Prop para manejar el cambio
+  disabled?: boolean;
 }
 
-const Counter: React.FC<CounterProps> = ({ min = 1, max = 3, onChange }) => {
+const Counter: React.FC<CounterProps> = ({ min = 1, max = 3, onChange, disabled = false }) => {
   const [value, setValue] = useState<number>(min);
 
   const handleIncrement = () => {

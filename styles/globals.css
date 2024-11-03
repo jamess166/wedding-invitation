@@ -3,53 +3,35 @@
 @tailwind base;
 @tailwind components;
 
-/* @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto&family=Allura&family=Cookie&family=Open+Sans&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto&family=Allura&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
 
-/* body {
-    background-color: #faf7f3;
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  */
-  /* h1, h2, h3, h4, h5, h6 {
-    font-family: 'Allura', sans-serif;
-  } */
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-allura);
   }
   
   :root {
-    --background: #EFEDE7;
-    --foreground: #171717;
-
+    --background: #F5F5F5; /* Fondo suave y ligeramente gris */
+    --foreground: #1A1A1A; /* Texto oscuro casi negro para buen contraste */
+  
     --font-allura: var(--font-allura);
     --font-roboto: var(--font-roboto);
     --font-roboto-mono: var(--font-roboto-mono);
     --font-cookie: var(--font-cookie);
     --font-opensans: var(--font-opensans);
-
-    --color-1: #4A6360;
-    --color-2: #81948B;
-    --color-3: #C6D7CF;
-    --color-4: #FAF7F3;
-    --color-5: #EFEDE7;
-    --color-6: #868686;
-    --color-7: #BFA880;
+    --font-dancing: var(--font-dancing);
+  
+    --color-1: #3C3C3C; /* Gris oscuro, ideal para texto secundario */
+    --color-2: #6D6D6D; /* Gris medio para elementos neutros y bordes */
+    --color-3: #A9A9A9; /* Gris claro, buen contraste con el fondo */
+    --color-4: #E8E8E8; /* Gris muy claro, perfecto para fondos secundarios */
+    --color-5: #FFFFFF; /* Blanco puro para detalles */
+    --color-6: #4E4E4E; /* Gris oscuro con un tono frío */
+    --color-7: #B3A394; /* Un gris neutro con un toque de beige suave */
   }
   
-  /* body {
-    color: var(--foreground);
-    background: var(--background);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
-      "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", "Allura";
-  }   */
   body {
     color: var(--foreground);
     background: var(--background);
@@ -74,6 +56,9 @@
     }
     .font-opensans {
       font-family: var(--font-opensans);
+    }
+    .font-dancing {
+      font-family: var(--font-dancing);
     }
   }
   

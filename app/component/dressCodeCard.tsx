@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardContent, Typography, Box } from '@mui/material';
 
-const DressCodeCard: React.FC = () => {
+const DressCodeCardext: React.FC = () => {
   // Colores sugeridos para el dress code
   const dressCodeColors = ['#2e3404', '#617751', '#bba993', '#d6d6cc'];
 
@@ -62,4 +62,4 @@ const DressCodeCard: React.FC = () => {
   );
 };
 
-export default DressCodeCard;
+export default DressCodeCardext;

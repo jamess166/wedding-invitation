@@ -8,6 +8,7 @@ interface CustomTextFieldProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   required?: boolean;
   fullWidth?: boolean;
+  disabled?: boolean; // Añadimos la prop disabled como opcional
 }
 
 const CustomTextField: React.FC<CustomTextFieldProps> = ({
@@ -17,6 +18,7 @@ const CustomTextField: React.FC<CustomTextFieldProps> = ({
   onChange,
   required = false,
   fullWidth = true,
+  disabled = false 
 }) => {
   return (
     <TextField
@@ -28,6 +30,7 @@ const CustomTextField: React.FC<CustomTextFieldProps> = ({
       fullWidth={fullWidth}
       margin="normal"
       required={required}
+      disabled={disabled}
       InputLabelProps={{
         shrink: true, // Mantiene el label siempre en la parte superior
       }}
