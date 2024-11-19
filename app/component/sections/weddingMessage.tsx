@@ -1,4 +1,5 @@
 import { Typography, Box } from '@mui/material';
+import CoupleNames from './coupleNames';
 
 const WeddingMessage: React.FC = () => {
   return (
@@ -11,8 +12,9 @@ const WeddingMessage: React.FC = () => {
         textAlign: 'center',
         maxWidth: '800px', // Limitar el ancho máximo para que no se expanda demasiado
         margin: '0 auto', // Centrado
-        padding: '60px',
-        backgroundColor: 'var(--background)', // Fondo suave
+        px: 8,
+        py: 6
+        // backgroundColor: 'var(--background)', // Fondo suave
       }}
     >
       {/* Título con la fuente 'Allura' */}
@@ -22,19 +24,21 @@ const WeddingMessage: React.FC = () => {
           fontFamily: 'var(--font-allura)',
           fontSize: { xs: '3rem', sm: '4rem', md: '5rem' }, // Tamaños responsivos
           color: 'var(--foreground)',
-          marginBottom: '40px',
+          marginBottom: '10px',
         }}
       >
         Nos Casamos
       </Typography>
 
+      <CoupleNames />
+
       {/* Subtítulo con una fuente diferente */}
       <Typography
         variant="body1"
         sx={{
-          fontFamily: 'var(--font-roboto)', // Fuente diferente
+          fontFamily: 'var(--font-opensans)', // Fuente diferente
           fontSize: { xs: '1rem', sm: '1.2rem', md: '1.5rem' }, // Tamaños responsivos
-          color: 'var(--color-1)',
+          color: 'var(--foreground)',
           lineHeight: '1.6',
         }}
       >

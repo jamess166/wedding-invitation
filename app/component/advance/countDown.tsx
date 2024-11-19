@@ -25,20 +25,22 @@ const TimeUnit: React.FC<TimeUnitProps> = ({ value, label }) => (
   >
     <Typography
       variant="h4"
-      className="font-bold text-gray-600"
+      // className="text-gray-600"
       sx={{
         fontFamily: "var(--font-opensans)",
         fontSize: { xs: "2rem", md: "2.5rem", xl: "4rem" },
+        color:"var(--foreground)",
       }}
     >
       {value}
     </Typography>
     <Typography
       variant="body2"
-      className="text-gray-400"
+      // className="text-gray-400"
       sx={{
         fontFamily: "var(--font-opensans)",
         marginTop: "0.2rem", // Ajusta el espacio entre número y etiqueta
+        color:"var(--foreground)",
       }}
     >
       {label}
@@ -76,8 +78,8 @@ const Countdown: React.FC<{ targetDate: Date }> = ({ targetDate }) => {
   return (
     <Box
       className="flex justify-center z-10"
-      mt={{xs:20, md:35}}
-      mb={{xs:25, md:35}}
+      mt={{xs:10, md:35}}
+      mb={{xs:10, md:35}}
       // elevation={3}
       sx={{
         // width: "20rem", // Aumenté un poco el ancho para que se vea más espacioso
@@ -93,11 +95,12 @@ const Countdown: React.FC<{ targetDate: Date }> = ({ targetDate }) => {
     >
       <Typography
         variant="h5"         
-        className="mb-4 text-gray-600 text-center font-bold" // Mayor espacio inferior
+        className="mb-4 text-center" // Mayor espacio inferior
         pb={5}
         sx={{
           fontFamily: "var(--font-opensans)",
-          fontSize:{xs:"2rem", sm:"2.3rem", md:"2.5rem", xl:"3rem"}
+          fontSize:{xs:"2rem", sm:"2.3rem", md:"2.5rem", xl:"3rem"},
+          color:"var(--foreground)",
         }}
       >
         01 de  Febrero  2025

@@ -14,7 +14,7 @@ const GiftCard: React.FC = () => {
     return (
         <Box
             pt={6}
-            pb={2}
+            pb={6}
             width={{ xs: 350, sm: 450 }}
             display="flex"
             flexDirection="column"
@@ -27,7 +27,7 @@ const GiftCard: React.FC = () => {
                 component="img"
                 src="/images/gift.png"
                 alt="Regalo Icon"
-                pb={8}
+                pb={4}
                 sx={{
                     width: { xs: "30%", md: "30%" },
                     height: "auto",
@@ -36,12 +36,11 @@ const GiftCard: React.FC = () => {
 
             <Typography
                 textAlign="center"
-                className="font-bold text-gray-600"
-                pb={4}
+                pb={2}
                 sx={{
-                    fontFamily: "var(--font-roboto)",
-                    fontSize: "2.3rem",
-                    color: "var(--color-6)",
+                    fontFamily: "var(--font-allura)",
+                    fontSize: "3.5rem",
+                    color: "var(--foreground)",
                 }}
             >
                 Regalos
@@ -52,22 +51,15 @@ const GiftCard: React.FC = () => {
                 mb={4}
                 sx={{
                     fontFamily: "var(--font-opensans)",
-                    fontSize: "1.1rem",
-                    color: "var(--color-2)",
-                    maxWidth: "80%",
+                    fontSize: "1rem",
+                    color: "var(--foreground)",
+                    // maxWidth: "80%",
                     lineHeight: 1.6,
                 }}
             >
                 Lo más importante es tu presencia, pero si deseas hacernos un regalo aquí
                 tienes nuestros datos
-            </Typography>
-
-            {/* <Button
-                onClick={() => setShowBankInfo(!showBankInfo)}
-                className="bg-[#B4A19A] hover:bg-[#A69389] text-white font-medium py-3 px-8 rounded transition-colors duration-300"
-            >
-                Regalanos un detalle
-            </Button> */}
+            </Typography>          
 
             <Button
                 variant="outlined"
@@ -104,7 +96,7 @@ const GiftCard: React.FC = () => {
                         sx={{
                             fontFamily: "var(--font-opensans)",
                             fontSize: "1.1rem",
-                            color: "var(--color-2)",
+                            color: "var(--foreground)",
                             fontWeight: "bold",
                         }}
                     >
@@ -115,8 +107,8 @@ const GiftCard: React.FC = () => {
                         mb={2}
                         sx={{
                             fontFamily: "var(--font-opensans)",
-                            fontSize: "1.1rem",
-                            color: "var(--color-2)",
+                            fontSize: "1rem",
+                            color: "var(--foreground)",
                         }}
                     >
                         N° de Cuenta: {bankInfo.cuenta}
@@ -126,8 +118,8 @@ const GiftCard: React.FC = () => {
                         textAlign="center"
                         sx={{
                             fontFamily: "var(--font-opensans)",
-                            fontSize: "1.1rem",
-                            color: "var(--color-2)",
+                            fontSize: "1rem",
+                            color: "var(--foreground)",
                         }}
                     >
                         CCI: {bankInfo.cci}

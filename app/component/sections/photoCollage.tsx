@@ -13,8 +13,8 @@ const PhotoCollage: React.FC = () => {
 
     return (
         <Box
-            mt={10}
-            pt={6}
+            mt={6}
+            pt={4}
             pb={0}
             display="flex"
             flexDirection="column"
@@ -27,6 +27,7 @@ const PhotoCollage: React.FC = () => {
         Nuestra Historia
       </h2> */}
             {/* Título con la fuente 'Allura' */}
+
             <Typography
                 variant="h1"
                 sx={{

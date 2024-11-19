@@ -41,7 +41,7 @@ const CustomTextField: React.FC<CustomTextFieldProps> = ({
         }, // Hover gris oscuro
         "& .MuiInput-underline:after": { borderBottomColor: "#1a1a1a" }, // Línea cuando está enfocado
         "& .MuiInputLabel-root": { 
-          color: "gray", // Color del label en gris
+          color: "black", // Color del label en gris
           width: "100%", // Asegura que ocupe todo el ancho del TextField
           textAlign: "center", // Centra el texto del label
           left: "0", // Alinea al inicio

@@ -10,7 +10,7 @@ const ReceptionCard: React.FC = () => {
 
   return (
     <Box
-      pt={6}
+      pt={2}
       pb={2}
       width={{ xs: 350, sm: 450 }}
       display="flex"
@@ -27,9 +27,9 @@ const ReceptionCard: React.FC = () => {
         component="img"
         src="/images/reception.png" // Ruta de la imagen
         alt="Descripción de la imagen"
-        pb={2}
+        pb={0}
         sx={{
-          width: { xs: "55%", md: "60%" }, // Controla el tamaño máximo: 100% en xs y 50% en md
+          width: { xs: "50%", md: "55%" }, // Controla el tamaño máximo: 100% en xs y 50% en md
           height: "auto",
         }}
       />
@@ -37,12 +37,11 @@ const ReceptionCard: React.FC = () => {
       {/* Detalles de la ceremonia */}
       <Typography
         textAlign="center"
-        className="font-bold text-gray-600"
         pb={4}
         sx={{
-          fontFamily: "var(--font-roboto)",
-          fontSize: "2.3rem",
-          color: "var(--color-6)",
+          fontFamily: "var(--font-allura)",
+          fontSize: "3.5rem",
+          color: "var(--foreground)",
         }}
       >
         {title}
@@ -51,11 +50,11 @@ const ReceptionCard: React.FC = () => {
       {/* Detalles de la ceremonia */}
       <Typography
         textAlign="center"
-        mb={2}
+        mb={1}
         sx={{
           fontFamily: "var(--font-roboto)",
           fontSize: "1.2rem",
-          color: "var(--color-6)",
+          color: "var(--foreground)",
         }}
       >
         Día
@@ -63,11 +62,11 @@ const ReceptionCard: React.FC = () => {
 
       <Typography
         textAlign="center"
-        mb={2}
+        mb={1}
         sx={{
           fontFamily: "var(--font-opensans)",
           fontSize: "1rem",
-          color: "var(--color-2)",
+          color: "var(--foreground)",
         }}
       >
         {date} {/* Uso de la fecha manual */}
@@ -87,11 +86,11 @@ const ReceptionCard: React.FC = () => {
       {/* Dirección */}
       <Typography
         textAlign="center"
-        mb={2}
+        mb={1}
         sx={{
           fontFamily: "var(--font-roboto)",
           fontSize: "1.2rem",
-          color: "var(--color-6)", // Gris suave
+          color: "var(--foreground)", // Gris suave
         }}
       >
         Dirección
@@ -103,7 +102,7 @@ const ReceptionCard: React.FC = () => {
         sx={{
           fontFamily: "var(--font-opensans)",
           fontSize: "1rem",
-          color: "var(--color-2)", // Verde medio
+          color: "var(--foreground)", // Verde medio
         }}
       >
         {address}
@@ -115,6 +114,21 @@ const ReceptionCard: React.FC = () => {
       <MapButton
         url="https://maps.app.goo.gl/tphRy9N8mAgWE6Sv7"
       />
+
+      
+<Typography
+        textAlign="center"
+        mb={3}
+        sx={{
+          fontFamily: "var(--font-opensans)",
+          fontSize: "1rem",
+          color: "var(--foreground)",
+          maxWidth: "80%",
+          lineHeight: 1.6,
+        }}
+      >
+        "Queremos que disfruten y bailen sin parar, es por ello que la invitación es solo para adultos"
+      </Typography>
     </Box>
   );
 };

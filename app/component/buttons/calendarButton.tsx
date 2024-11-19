@@ -56,7 +56,7 @@ const CalendarButton: React.FC<CalendarButtonProps> = ({
         fontFamily: "var(--font-opensans)",
         borderRadius: "50px",
         padding: "8px 16px",
-        marginBottom: 8,
+        marginBottom: 6,
         "&:hover": {
           backgroundColor: "var(--color-4)",
           borderColor: "var(--color-2)",

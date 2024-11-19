@@ -1,57 +1,3 @@
-// import React from "react";
-// import { useMediaQuery, useTheme, Box, Typography } from "@mui/material";
-
-// const Banner = () => {
-//   const theme = useTheme();
-//   const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
-
-//   // Selecciona la imagen de fondo según el tamaño de la pantalla
-//   const backgroundImage = isSmallScreen
-//     ? "url(/images/banner_4.jpeg)"
-//     : "url(/images/banner_2.jpeg)";
-
-//   return (
-//     <Box
-//       sx={{
-//         height: "100vh", // Toda la altura de la pantalla
-//         backgroundImage: backgroundImage,
-//         backgroundSize: "cover",
-//         backgroundPosition: "center",
-//         display: "flex",
-//         alignItems: "center",
-//         justifyContent: "center",
-//         color: "white",
-//         textAlign: "center",
-//         "&::after": {
-//           content: '""',
-//           position: "absolute",
-//           bottom: 0,
-//           left: 0,
-//           width: { xs: "100%", md: "100%" },
-//           height: { xs: "18%", sm: "28%", md: "40%", lg: "45%", xl: "70%" },
-//           backgroundImage: `url('/images/torn_edge.png')`, // imagen de borde rasgado
-//           backgroundSize: "cover",
-//           backgroundRepeat: "no-repeat",
-//         },
-//       }}
-//     >
-//       <Box zIndex={2}>
-//         <Typography py={{ xs: 2, md: 3, xl: 4 }} variant="h1" sx={{ fontSize: { xs: "5rem", sm: "6rem", md: "6.5rem", xl: "7rem" }, lineHeight: "1", fontFamily: "var(--font-dancing)", }}>
-//           01
-//         </Typography>
-//         <br />
-//         <Typography py={{ xs: 2, md: 3, xl: 4 }} variant="h1" sx={{ fontSize: { xs: "5rem", sm: "6rem", md: "6.5rem", xl: "7rem" }, lineHeight: "1", fontFamily: "var(--font-dancing)", }}>
-//           FEB
-//         </Typography>
-//         <br />
-//         <Typography py={{ xs: 2, md: 3, xl: 4 }} variant="h1" sx={{ fontSize: { xs: "5rem", sm: "6rem", md: "6.5rem", xl: "7rem" }, lineHeight: "1", fontFamily: "var(--font-dancing)", }}>
-//           2025
-//         </Typography>
-//       </Box>
-//     </Box>
-//   );
-// };
-
 // export default Banner;
 import { Box, Typography, useTheme, useMediaQuery } from "@mui/material";
 import { FC } from "react";
@@ -66,6 +12,7 @@ const Banner: FC = () => {
 
   return (
     <Box
+      mb={8}
       sx={{
         position: "relative",
         height: "100vh",
@@ -76,7 +23,7 @@ const Banner: FC = () => {
       {/* Main background container */}
       <Box
         sx={{
-          height: "100%",
+          height: "100vh",
           width: "100%",
           backgroundImage: backgroundImage,
           backgroundSize: "cover",
@@ -102,7 +49,7 @@ const Banner: FC = () => {
         {/* Content container */}
         <Box
           sx={{
-            mt: {xs:30, md:20, xl:20},
+            mt: { xs: 30, md: 20, xl: 20 },
             position: "relative",
             zIndex: 2,
           }}
@@ -146,7 +93,7 @@ const Banner: FC = () => {
       </Box>
 
       {/* Imagen SVG de fondo con efecto de papel rasgado */}
-      <Box
+      {/* <Box
         sx={{
           position: 'absolute',
           bottom: 0,
@@ -158,7 +105,7 @@ const Banner: FC = () => {
           transform: 'rotate(180deg)', // Rota la imagen 180 grados
           zIndex: 3,          
         }}
-      />
+      /> */}
 
       {/* Torn edge overlay */}
       {/* <Box

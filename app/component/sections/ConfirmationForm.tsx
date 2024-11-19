@@ -1,9 +1,9 @@
 // ConfirmationForm.tsx
 import React, { useState } from 'react';
 import { Container, Box, Typography } from '@mui/material';
-import CustomTextField from './customTextField';
-import Counter from './numeric-input-field';
-import CustomButton from './buttons/customButton';
+import CustomTextField from '../customTextField';
+import Counter from '../numeric-input-field';
+import CustomButton from '../buttons/customButton';
 
 const ConfirmationForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -137,14 +137,29 @@ const ConfirmationForm: React.FC = () => {
 
 
   return (
-    <Container maxWidth="lg" id="confirmacion" sx={{ marginBottom: 10, textAlign: 'center' }}>
+    <Container maxWidth="lg" id="confirmacion" sx={{ paddingBottom: 10, textAlign: 'center' }}>
       <form
         onSubmit={handleSubmit}
-        className="max-w-md mx-auto mt-36 mb-6 p-6 bg-white rounded-lg"
+        className="max-w-md mx-auto mt-20 mb-6 p-6 bg-white rounded-lg"
       >
+
+        <Typography
+          variant="h1"
+          sx={{
+            fontFamily: 'var(--font-allura)',
+            fontSize: { xs: '3rem', sm: '4rem', md: '5rem' }, // Tamaños responsivos
+            color: 'var(--foreground)',
+            marginBottom: '20px',
+          }}
+        >
+          Confirmación
+        </Typography>
+
         <Box sx={{ maxWidth: 400, margin: '0 auto' }}>
-          <Typography gutterBottom className="mb-4 text-center text-gray-400 text-xs">
-            Por favor responda antes de 15 de Enero
+          <Typography gutterBottom className="mb-6 text-center text-xs">
+            Nos encantaría contar con tu presencia en nuestra boda y crear juntos recuerdos inolvidables.
+            Por favor, confirma tu asistencia para que podamos tener todo listo para ti.
+            Además, al confirmar, compártenos una canción que te gustaría disfrutar y bailar en nuestra pista de baile.
           </Typography>
 
           {submitStatus === 'success' && (
@@ -203,7 +218,7 @@ const ConfirmationForm: React.FC = () => {
             <Typography
               gutterBottom
               className="mb-4 mt-4 text-center text-darkgray-600 text-md"
-              sx={{ color: '#4a4a4a' }}
+              sx={{ color: 'black' }}
             >
               Acompañantes
             </Typography>

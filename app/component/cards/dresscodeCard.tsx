@@ -7,7 +7,7 @@ interface ColorCircleProps {
 
 const ColorCircle: React.FC<ColorCircleProps> = ({ color }) => (
     <div
-        className="w-12 h-12 rounded-full transition-transform duration-300 hover:scale-110"
+        className="w-10 h-10 rounded-full transition-transform duration-300 hover:scale-110"
         style={{ backgroundColor: color }}
     />
 );
@@ -35,8 +35,8 @@ const DressCodeCard: React.FC = () => {
 
     return (
         <Box
-            pt={6}
-            pb={2}
+            pt={2}
+            pb={0}
             width={{ xs: 350, sm: 450 }}
             display="flex"
             flexDirection="column"
@@ -49,7 +49,7 @@ const DressCodeCard: React.FC = () => {
                 component="img"
                 src="/images/dresscode.png"
                 alt="Dress Code Icon"
-                pb={8}
+                pb={2}
                 sx={{
                     width: { xs: "40%", md: "40%" },
                     height: "auto",
@@ -58,15 +58,26 @@ const DressCodeCard: React.FC = () => {
 
             <Typography
                 textAlign="center"
-                className="font-bold text-gray-600"
-                pb={4}
+                pb={2}
                 sx={{
-                    fontFamily: "var(--font-roboto)",
-                    fontSize: "2.3rem",
-                    color: "var(--color-6)",
+                    fontFamily: "var(--font-allura)",
+                    fontSize: "3.5rem",
+                    color: "var(--foreground)",
                 }}
             >
                 Código de Vestimenta
+            </Typography>
+
+            <Typography
+                textAlign="center"
+                mb={6}
+                sx={{
+                    fontFamily: "var(--font-opensans)",
+                    fontSize: "1rem",
+                    color: "var(--foreground)",
+                }}
+            >
+               Recuerda, lo más importante para nosotros es que estés cómodo. Pero nos gustaría que la Vestimenta fuera formal.
             </Typography>
 
             {/* Detalles de la ceremonia */}
@@ -76,22 +87,11 @@ const DressCodeCard: React.FC = () => {
                 sx={{
                     fontFamily: "var(--font-roboto)",
                     fontSize: "1.2rem",
-                    color: "var(--color-6)",
+                    color: "var(--foreground)",
                 }}
             >
                 Mujeres
             </Typography>
-
-            {/* <div className="grid grid-cols-5 gap-4 mb-8 px-4">
-        {colors.slice(0, 5).map((color, index) => (
-          <ColorCircle key={index} color={color} />
-        ))}
-      </div>
-      <div className="grid grid-cols-4 gap-4 mb-8 px-4">
-        {colors.slice(5).map((color, index) => (
-          <ColorCircle key={index} color={color} />
-        ))}
-      </div> */}
 
             <div className="grid grid-cols-5 gap-4 mb-8 px-4">
                 {colors.slice(0, 5).map((color, index) => (
@@ -107,7 +107,7 @@ const DressCodeCard: React.FC = () => {
                 sx={{
                     fontFamily: "var(--font-roboto)",
                     fontSize: "1.2rem",
-                    color: "var(--color-6)",
+                    color: "var(--foreground)",
                 }}
             >
                 Hombres
@@ -118,21 +118,6 @@ const DressCodeCard: React.FC = () => {
                     <ColorCircle key={index} color={color} />
                 ))}
             </div>
-
-            <Typography
-                textAlign="center"
-                mb={4}
-                sx={{
-                    fontFamily: "var(--font-opensans)",
-                    fontSize: "1.1rem",
-                    color: "var(--color-2)",
-                    maxWidth: "80%",
-                    lineHeight: 1.6,
-                }}
-            >
-                Les pedimos amablemente a nuestros invitados que vistan en estos tonos
-                para nuestro día especial
-            </Typography>
         </Box>
     );
 };

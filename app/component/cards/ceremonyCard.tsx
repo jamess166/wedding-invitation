@@ -5,7 +5,7 @@ import MapButton from "../buttons/mapbutton";
 
 const CeremonyCard: React.FC = () => {
   const title = "Ceremonia";
-  const date = "Sábado 01 de Febrero - 16:30 hr";
+  const date = "Sábado 01 de Febrero - 16:00 hr";
   const address = "Catedral de Trujillo";
 
   return (
@@ -27,7 +27,7 @@ const CeremonyCard: React.FC = () => {
         component="img"
         src="/images/church.png" // Ruta de la imagen
         alt="Descripción de la imagen"
-        pb={2}
+        pb={0}
         sx={{
           width: { xs: "100%", md: "90%" }, // Controla el tamaño máximo: 100% en xs y 50% en md
           height: "auto",
@@ -37,12 +37,11 @@ const CeremonyCard: React.FC = () => {
       {/* Detalles de la ceremonia */}
       <Typography
         textAlign="center"
-        className="font-bold text-gray-600"
-        pb={4}
+        pb={2}
         sx={{
-          fontFamily: "var(--font-roboto)",
-          fontSize: "2.3rem",
-          color: "var(--color-6)",
+          fontFamily: "var(--font-allura)",
+          fontSize: "3.5rem",
+          color: "var(--foreground)",
         }}
       >
         {title}
@@ -51,11 +50,11 @@ const CeremonyCard: React.FC = () => {
       {/* Detalles de la ceremonia */}
       <Typography
         textAlign="center"
-        mb={2}
+        mb={0}
         sx={{
           fontFamily: "var(--font-roboto)",
           fontSize: "1.2rem",
-          color: "var(--color-6)",
+          color: "var(--foreground)",
         }}
       >
         Día
@@ -67,7 +66,7 @@ const CeremonyCard: React.FC = () => {
         sx={{
           fontFamily: "var(--font-opensans)",
           fontSize: "1rem",
-          color: "var(--color-2)",
+          color: "var(--foreground)",
         }}
       >
         {date} {/* Uso de la fecha manual */}
@@ -76,7 +75,7 @@ const CeremonyCard: React.FC = () => {
       {/* Botón Agendar */}
       <CalendarButton
         fecha="20250201" // 1 de febrero de 2025
-        horaInicio="1630" // 16:30 en formato HHMM
+        horaInicio="1600" // 16:00 en formato HHMM
         horaFin="1830" // 18:30 en formato HHMM
         titulo="Boda de Sheyla y James"
         descripcion="¡A celebrar el amor de Sheyla y James! 🎉 Será una fiesta increíble con mucha alegría, música y buenos momentos."
@@ -87,11 +86,11 @@ const CeremonyCard: React.FC = () => {
       {/* Dirección */}
       <Typography
         textAlign="center"
-        mb={2}
+        mb={0}
         sx={{
           fontFamily: "var(--font-roboto)",
           fontSize: "1.2rem",
-          color: "var(--color-6)", // Gris suave
+          color: "var(--foreground)", // Gris suave
         }}
       >
         Dirección
@@ -103,7 +102,7 @@ const CeremonyCard: React.FC = () => {
         sx={{
           fontFamily: "var(--font-opensans)",
           fontSize: "1rem",
-          color: "var(--color-2)", // Verde medio
+          color: "var(--foreground)", // Verde medio
         }}
       >
         {address}
