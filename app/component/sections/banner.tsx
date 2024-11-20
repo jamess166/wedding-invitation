@@ -49,7 +49,7 @@ const Banner: FC = () => {
         {/* Content container */}
         <Box
           sx={{
-            mt: { xs: 30, md: 20, xl: 20 },
+            mt: { xs: 25, md: 20, xl: 20 },
             position: "relative",
             zIndex: 2,
           }}
