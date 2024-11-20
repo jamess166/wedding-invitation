@@ -16,6 +16,7 @@ import VerticalCardList from "./component/sections/verticalCardList";
 import PhotoCollage from "./component/sections/photoCollage";
 import GiftCard from "./component/cards/giftCard";
 import CoupleNames from "./component/sections/coupleNames";
+import { ReceptionModal } from "./component/sections/receptionModal";
 
 const Home: React.FC = () => {
   const targetDate = new Date("2025-02-01T23:59:59");
@@ -56,6 +57,7 @@ const Home: React.FC = () => {
       </Box>
 
       <ConfirmationForm />
+
       {/* formData={formData}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
