@@ -2,11 +2,17 @@ import React from "react";
 import { Box, Typography } from "@mui/material";
 import CalendarButton from "../buttons/calendarButton";
 import MapButton from "../buttons/mapbutton";
+import { useSearchParams } from "next/navigation";
 
 const ReceptionCard: React.FC = () => {
+  const searchParams = useSearchParams(); // Obtener los parámetros de la URL
+  const nameFromUrl = searchParams.get('name') || '';
+  const guestsFromUrl = parseInt(searchParams.get('guests') || '1', 10);
+
   const title = "Recepción";
-  const date = "Sábado 01 de Febrero - 19:00 hr";
+  const date = nameFromUrl ? "Sábado 01 de Febrero - 19:00 hr" : "Sábado 01 de Febrero - 08:30 hr";
   const address = "La Estancia La Encalada";
+
 
   return (
     <Box
@@ -115,8 +121,8 @@ const ReceptionCard: React.FC = () => {
         url="https://maps.app.goo.gl/tphRy9N8mAgWE6Sv7"
       />
 
-      
-<Typography
+
+      <Typography
         textAlign="center"
         mb={3}
         sx={{

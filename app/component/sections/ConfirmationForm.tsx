@@ -21,11 +21,10 @@ const ConfirmationForm: React.FC = () => {
   const nameFromUrl = searchParams.get('name') || '';
   const guestsFromUrl = parseInt(searchParams.get('guests') || '1', 10);
 
-  console.log(searchParams.get('name'));
+  // console.log(searchParams.get('name'));
 
   const [formData, setFormData] = useState({
-    nombre: nameFromUrl, // Usar valor de la URL
-    correo: '',
+    nombre: nameFromUrl, // Usar valor de la URL    
     song: '',
     acompanantes: guestsFromUrl, // Valor de acompañantes desde la URL
   });
@@ -62,11 +61,11 @@ const ConfirmationForm: React.FC = () => {
     setSubmitStatus('idle');
 
     const formPayload = {
-      name: formData.nombre,
-      email: formData.correo,
+      name: formData.nombre,      
       song: formData.song,
       acompanantes: formData.acompanantes,
     };
+    console.log(formPayload);
 
     try {
       const response = await fetch(
@@ -75,7 +74,7 @@ const ConfirmationForm: React.FC = () => {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer YOUR_API_KEY', // Si es necesario
+            'Authorization': 'ubXnpb1O$CvNEtEj#Q!1weuXrkoEcBIDNyR!QpgPA44l_!y%gv@#fopAJlAKn!SL', // Si es necesario
           },
           body: JSON.stringify(formPayload),
         }
@@ -84,8 +83,7 @@ const ConfirmationForm: React.FC = () => {
       if (response.ok) {
         setSubmitStatus('success');
         setFormData({
-          nombre: nameFromUrl, // Restaurar valores desde la URL
-          correo: '',
+          nombre: nameFromUrl, // Restaurar valores desde la URL          
           song: '',
           acompanantes: guestsFromUrl,
         });
@@ -134,7 +132,7 @@ const ConfirmationForm: React.FC = () => {
               value={formData.nombre}
               onChange={handleChange}
               required
-              disabled // Campo deshabilitado
+              disabled={!!nameFromUrl} // Campo deshabilitado
             />
           </Box>
 

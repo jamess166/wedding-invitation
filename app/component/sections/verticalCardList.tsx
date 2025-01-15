@@ -4,9 +4,15 @@ import CeremonyCard from "../cards/ceremonyCard";
 import ReceptionCard from "../cards/receptionCard";
 import DressCodeCard from "../cards/dresscodeCard";
 import GiftCard from "../cards/giftCard";
+import { useSearchParams } from "next/navigation";
 
 
 const VerticalCardList: React.FC = () => {
+
+    const searchParams = useSearchParams(); // Obtener los parámetros de la URL
+    const nameFromUrl = searchParams.get('name') || '';
+    const guestsFromUrl = parseInt(searchParams.get('guests') || '1', 10);
+
     return (
         <Box
             mt={{ xs: 18, sm: 24 }}
@@ -21,10 +27,18 @@ const VerticalCardList: React.FC = () => {
             }}
         >
             {/* Divider después de la primera card */}
-            <Divider sx={{ width: "50%", height: "3px", backgroundColor: "divider" }} />
+            {/* <Divider sx={{ width: "50%", height: "3px", backgroundColor: "divider" }} /> */}
 
             {/* Primera Card */}
-            <CeremonyCard />
+            {/* <CeremonyCard /> */}
+
+            {/* Mostrar CeremonyCard solo si hay valores válidos */}
+            {nameFromUrl && guestsFromUrl > 0 && (
+                <>
+                    <Divider sx={{ width: "50%", height: "3px", backgroundColor: "divider" }} />
+                    <CeremonyCard />
+                </>
+            )}
 
             {/* Divider después de la primera card */}
             <Divider sx={{ width: "50%", height: "3px", backgroundColor: "divider" }} />
