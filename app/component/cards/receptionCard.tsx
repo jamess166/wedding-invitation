@@ -12,7 +12,7 @@ const ReceptionCard: React.FC = () => {
   const { nameFromUrl, guests } = useUrlParams();
 
   const title = "Recepción";
-  const date = nameFromUrl ? "Sábado 01 de Febrero - 19:00 hr" : "Sábado 01 de Febrero - 08:30 hr";
+  const date = nameFromUrl ? "Sábado 01 de Febrero - 19:00 hr" : "Sábado 01 de Febrero - 09:00 hr";
   const address = "La Estancia La Encalada";
 
 
