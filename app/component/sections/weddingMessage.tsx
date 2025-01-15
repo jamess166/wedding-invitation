@@ -1,12 +1,14 @@
 import { Typography, Box } from '@mui/material';
 import CoupleNames from './coupleNames';
 import { useSearchParams } from 'next/navigation';
+import { useUrlParams } from '@/app/hooks/useUrlParams';
 
 const WeddingMessage: React.FC = () => {
 
-  const searchParams = useSearchParams(); // Obtener los parámetros de la URL
-  const nameFromUrl = searchParams.get('name') || '';
-  const guestsFromUrl = parseInt(searchParams.get('guests') || '1', 10);
+  // const searchParams = useSearchParams(); // Obtener los parámetros de la URL
+  // const nameFromUrl = searchParams.get('name') || '';
+  // const guestsFromUrl = parseInt(searchParams.get('guests') || '1', 10);
+    const { nameFromUrl, guests } = useUrlParams();
 
   return (
     <Box

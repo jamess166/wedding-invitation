@@ -17,12 +17,13 @@ import PhotoCollage from "./component/sections/photoCollage";
 import GiftCard from "./component/cards/giftCard";
 import CoupleNames from "./component/sections/coupleNames";
 import { ReceptionModal } from "./component/sections/receptionModal";
+import { useSearchParams } from "next/navigation";
 
 const Home: React.FC = () => {
   const targetDate = new Date("2025-02-01T23:59:59");
 
   return (
-    <>
+    <React.Suspense>
       {/* <LoadingModal /> */}
       <Banner />
 
@@ -63,7 +64,7 @@ const Home: React.FC = () => {
         handleSubmit={handleSubmit}
         handleCounterChange={handleCounterChange}
       /> */}
-    </>
+    </React.Suspense>
   );
 };
 

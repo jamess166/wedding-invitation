@@ -5,9 +5,10 @@ import CustomTextField from '../customTextField';
 import CustomButton from '../buttons/customButton';
 import { ReceptionModal } from './receptionModal';
 import { Suspense } from 'react';
+import { useUrlParams } from '@/app/hooks/useUrlParams';
 
 const ConfirmationForm: React.FC = () => {
-  const searchParams = useSearchParams(); // Obtener los parámetros de la URL
+  // const searchParams = useSearchParams(); // Obtener los parámetros de la URL
 
   // const [isClient, setIsClient] = useState(false);
 
@@ -18,15 +19,17 @@ const ConfirmationForm: React.FC = () => {
   // Recuperar los valores desde la URL solo en el cliente
   // const nameFromUrl = isClient ? searchParams.get('name') || '' : '';
   // const guestsFromUrl = isClient ? parseInt(searchParams.get('guests') || '1', 10) : 1;
-  const nameFromUrl = searchParams.get('name') || '';
-  const guestsFromUrl = parseInt(searchParams.get('guests') || '1', 10);
+  // const nameFromUrl = searchParams.get('name') || '';
+  // const guestsFromUrl = parseInt(searchParams.get('guests') || '1', 10);
 
   // console.log(searchParams.get('name'));
+
+    const { nameFromUrl, guests } = useUrlParams();
 
   const [formData, setFormData] = useState({
     nombre: nameFromUrl, // Usar valor de la URL    
     song: '',
-    acompanantes: guestsFromUrl, // Valor de acompañantes desde la URL
+    acompanantes: guests, // Valor de acompañantes desde la URL
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -85,7 +88,7 @@ const ConfirmationForm: React.FC = () => {
         setFormData({
           nombre: nameFromUrl, // Restaurar valores desde la URL          
           song: '',
-          acompanantes: guestsFromUrl,
+          acompanantes: guests,
         });
       } else {
         setSubmitStatus('error');

@@ -3,11 +3,13 @@ import { Box, Typography } from "@mui/material";
 import CalendarButton from "../buttons/calendarButton";
 import MapButton from "../buttons/mapbutton";
 import { useSearchParams } from "next/navigation";
+import { useUrlParams } from "@/app/hooks/useUrlParams";
 
 const ReceptionCard: React.FC = () => {
-  const searchParams = useSearchParams(); // Obtener los parámetros de la URL
-  const nameFromUrl = searchParams.get('name') || '';
-  const guestsFromUrl = parseInt(searchParams.get('guests') || '1', 10);
+  // const searchParams = useSearchParams(); // Obtener los parámetros de la URL
+  // const nameFromUrl = searchParams.get('name') || '';
+  // const guestsFromUrl = parseInt(searchParams.get('guests') || '1', 10);
+  const { nameFromUrl, guests } = useUrlParams();
 
   const title = "Recepción";
   const date = nameFromUrl ? "Sábado 01 de Febrero - 19:00 hr" : "Sábado 01 de Febrero - 08:30 hr";
